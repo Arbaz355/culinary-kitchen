@@ -1,0 +1,350 @@
+@use '../abstract/breakpoints' as *;
+@use '../abstract/colors' as *;
+@use '../abstract/function' as *;
+@use '../abstract/mixins' as *;
+
+// ======== varieties section ===========
+.food-varieties__item{
+    overflow:hidden;
+    border-radius:rem(16);
+    position:relative;
+
+    @include breakpoint-md{
+        border-radius:rem(18);
+    }
+
+    @include breakpoint-lg{
+        border-radius:rem(20);
+    }
+
+    &:hover{
+        cursor:pointer;
+    }
+
+    &:hover .img-cover{
+        transform:scale(1.035);
+    }
+}
+
+.food-varieties__item-footer{
+    position:absolute;
+    bottom:0;
+    right:0;
+    left:0;
+    width:100%;
+    z-index:3;
+ 
+
+    &--primary{
+        padding:rem(20);
+
+        @include breakpoint-lg{
+            padding:rem(32);
+        }
+    }
+
+    &--secondary{
+        padding:rem(20);
+        
+        .food-rating{
+            font-size:rem(16);
+        }
+    }
+
+    .food-rating--clr-white{
+        color:$clr-white;
+    }
+
+    &--bg-pink,
+    &--bg-black{
+        color:$clr-white;
+
+        h2,h4,p,hr{
+            color:$clr-white;
+        }
+    }
+
+    &--bg-pink{
+        background-color:rgba(52, 38, 121, 0.75);
+    }
+
+    &--bg-white{
+        background-color:rgba(255, 255, 255, 0.75);
+    }
+
+    &--bg-black{
+       background-color:rgba(0, 0, 0, 0.75); 
+    }
+
+    .food-varieties__heading{
+        font-size:rem(22);
+
+
+        @include breakpoint-sm{
+            font-size:rem(24);
+        }
+
+        @include breakpoint-lg{
+            font-size:rem(36)
+        }
+    }
+}
+
+.food-varieties__grid {
+    grid-gap: rem(20);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(15, max(130px, 10vh));
+
+    .img-cover {
+        height: 100%;
+        -o-object-fit: cover;
+        object-fit: cover;
+        transition: all .45s cubic-bezier(.165, .84, .44, 1);
+        width: 100%;
+    }
+
+
+    @include breakpoint-md{
+        grid-template-rows: repeat(9, max(130px, 10vh));
+    }
+
+    @include breakpoint-lg {
+        grid-template-rows: repeat(8, max(70px, 8vh));
+    }
+
+    @include breakpoint-md{
+        grid-gap: rem(16);
+    }
+
+    @include breakpoint-lg {
+        grid-gap: rem(22);
+    }
+
+    @include breakpoint-xl{
+        grid-gap:rem(24);
+    }
+}
+
+.grid-item:nth-child(1) {
+    grid-row-start: 1;
+    grid-row-end: 4;
+    grid-column-start: 1;
+    grid-column-end: 5;
+
+    @include breakpoint-md{
+        grid-column-end: 3;
+        grid-column-start: 1;
+        grid-row-end: 4;
+        grid-row-start: 1;
+    }
+
+    @include breakpoint-lg{
+        grid-row-start: 1;
+        grid-row-end: 9;
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+}
+
+.grid-item:nth-child(2) {
+    grid-row-start: 4;
+    grid-row-end: 7;
+    grid-column-start: 1;
+    grid-column-end: 5;
+
+    @include breakpoint-md{
+        grid-column-end: 5;
+        grid-column-start: 3;
+        grid-row-end: 4;
+        grid-row-start: 1;
+    }
+
+    @include breakpoint-lg{
+        grid-column-end: 4;
+        grid-column-start: 3;
+        grid-row-end: 5;
+        grid-row-start: 1;
+    }
+}
+
+.grid-item:nth-child(3) {
+    grid-row-start: 7;
+    grid-row-end: 10;
+    grid-column-start: 1;
+    grid-column-end: 5;
+
+    @include breakpoint-md{
+        grid-column-end: 3;
+        grid-column-start: 1;
+        grid-row-end: 7;
+        grid-row-start: 4;
+    }
+
+    @include breakpoint-lg{
+        grid-column-end: 5;
+        grid-column-start: 4;
+        grid-row-end: 5;
+        grid-row-start: 1;
+    }
+}
+
+.grid-item:nth-child(4) {
+    grid-row-start: 10;
+    grid-row-end: 13;
+    grid-column-start: 1;
+    grid-column-end: 5;
+
+    @include breakpoint-md{
+        grid-column-end: 5;
+        grid-column-start: 3;
+        grid-row-end: 7;
+        grid-row-start: 4;
+    }
+
+    @include breakpoint-lg{
+        grid-column-end: 3;
+        grid-column-start: 4;
+        grid-row-end: 9;
+        grid-row-start: 5;
+    }
+}
+
+.grid-item:nth-child(5) {
+    grid-row-start: 13;
+    grid-row-end: 16;
+    grid-column-start: 1;
+    grid-column-end: 5;
+
+    @include breakpoint-md{
+        grid-column-end: 3;
+        grid-column-start: 1;
+        grid-row-end: 10;
+        grid-row-start: 7;
+    }
+
+    @include breakpoint-lg{
+        grid-column-end: 5;
+        grid-column-start: 4;
+        grid-row-end: 9;
+        grid-row-start: 5;
+    }
+}
+
+// ========== top chefs ===========
+.top-chefs__wrapper{
+    position: relative;
+    width:100%;
+    min-height:30vh;
+    background-image:url('../asset/img/top-checfs-bg.jpg');
+    @include background-cover;
+
+    &:after{
+        content:"";
+        position:absolute;
+        inset:0;
+        width:100%;
+        height:100%;
+        background-color:rgba(0, 0, 0, 0.45);
+        z-index:2;
+    }
+}
+
+.top-chefs__inner-container{
+
+    @include breakpoint-xl{
+        max-width:80%;
+        margin-inline:auto;
+    }
+}
+
+.top-chefs__profile-card{
+    position: relative;
+    z-index:3;
+
+    border-radius:rem(12);
+    transition:0.25s all ease-in-out;
+
+    &:hover{
+        background-color:$clr-white;
+        cursor: pointer;
+    }
+
+    &:hover .top-chefs__designation,
+    &:hover .top-chefs__name{
+        color:$clr-black;
+    }
+
+    &:hover .top-chefs__quote{
+        visibility: visible;
+    }
+
+    @include breakpoint-md{
+        padding:rem(48) rem(24);
+    }
+}
+
+.top-chefs__profile-img{
+    width:rem(150);
+    border-radius:50%;
+}
+
+.top-chefs__quote{
+    display:none;
+    visibility:hidden;
+
+    @include breakpoint-md{
+        display:block;
+    }
+}
+
+.top-chefs__designation,
+.top-chefs__name{
+    color:$clr-white;
+}
+
+// ============ food guide ===============
+.food-guide__wrapper{
+    position:relative;
+    width:100%;
+    min-height:100vh;
+    background-image:url("../asset/img/food-guide-bg.jpg");
+    @include background-cover;
+
+    .section-header,
+    .row{
+        position:relative;
+        z-index:3;
+    }
+
+    &:after{
+        content:"";
+        position:absolute;
+        inset:0;
+        background-color:rgba(0, 0, 0, 0.35);
+        z-index:2;
+        width:100%;
+        height:100%;
+
+        @include breakpoint-md{
+            display:none;
+        }
+    }
+}
+
+.food-guide__inner-container{
+    position:relative;
+    z-index:5;
+}
+
+.food-guid__icon{
+    width:rem(85);
+
+    @include breakpoint-lg{
+        width:rem(85);
+    }
+
+    @include breakpoint-xl{
+        width:rem(120);
+    }
+}

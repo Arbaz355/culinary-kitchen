@@ -1,0 +1,122 @@
+@use '../abstract/mixins' as *;
+@use '../abstract/function' as *;
+@use '../abstract/font' as *;
+@use '../abstract/colors' as *;
+
+// ===== base and responsive font size  ========
+
+// Breakpoint values for min-width operators.
+$breakpoints: (
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl:1600px,
+);
+
+// Null is mobile, no breakpoint.
+$p-font-sizes: (
+  null  : (rem(16), rem(24)), // Font sizes and line height 
+  sm: (rem(16), rem(24)),
+  md: (rem(16), rem(32)),
+  lg: (rem(18), rem(26)),
+  xl: (rem(18), rem(26)),
+  xxl:(rem(20), rem(28)),
+);
+
+$h1-font-sizes: (
+  null  : (rem(38), rem(46)),   
+  sm : (rem(44), rem(52)),
+  md  : (rem(50), rem(62)),
+  lg : (rem(56), rem(64)),
+  xl : (rem(56), rem(64)),
+  xxl : (rem(58), rem(64)),
+);
+
+$h2-font-sizes:(
+  null  :(rem(32), rem(36)), 
+  sm :(rem(34), rem(38)),
+  md :(rem(34), rem(38)),
+  lg : (rem(36), rem(40)),
+  xl : (rem(36), rem(40)),
+  xxl : (rem(38), rem(44)),
+);
+
+$h3-font-sizes: (
+  null  :(rem(30), rem(28)), 
+  sm :(rem(32), rem(30)),
+  md :(rem(32), rem(30)),
+  lg :(rem(34), rem(32)),
+  xl : (rem(34), rem(32)),
+  xxl : (rem(36), rem(34)),
+);
+
+$h4-font-sizes: (
+  null  :(rem(22), rem(30)), 
+  sm :(rem(22), rem(30)),
+  md :(rem(22), rem(30)),
+  lg :(rem(24), rem(32)),
+  xl :(rem(24), rem(32)),
+  xxl : (rem(30), rem(44)),
+);
+
+
+@mixin font-size($fs-map, $fs-breakpoints: $breakpoints) {
+  @each $fs-breakpoint, $fs-font-size in $fs-map{
+    @if $fs-breakpoint == null {
+      @include make-font-size($fs-font-size);
+    }
+    @else {
+      // If $fs-font-size is a key that exists in
+      // $fs-breakpoints, use the value
+      @if map-has-key($fs-breakpoints, $fs-breakpoint) {
+        $fs-breakpoint: map-get($fs-breakpoints, $fs-breakpoint);
+      }
+      @media screen and (min-width: $fs-breakpoint) {
+        @include make-font-size($fs-font-size);
+      }
+    }
+  }
+}
+
+// Utility function for mixin font-size
+@mixin make-font-size($fs-font-size) {
+  // If $fs-font-size is a list, include
+  // both font-size and line-height
+  @if type-of($fs-font-size) == "list" {
+    font-size: nth($fs-font-size, 1);
+    @if (length($fs-font-size) > 1) {
+      line-height: nth($fs-font-size, 2);
+    }
+  }
+  @else {
+    font-size: $fs-font-size;
+  }
+}
+
+
+// ======== adding both font size and font-family mixins====
+h1{
+    @include font-size($h1-font-sizes);
+}
+
+h2{
+    @include font-size($h2-font-sizes);
+}
+
+h3{
+    @include font-size($h3-font-sizes);
+}
+
+h4{
+    @include font-size($h4-font-sizes);
+}
+
+h1, h2, h3, h4{
+  @include font-heading;
+}
+
+p, ul, ol, body{
+    @include font-size($p-font-sizes);
+    @include font-body;
+}

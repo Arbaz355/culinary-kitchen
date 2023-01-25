@@ -1,0 +1,145 @@
+@mixin generate-responsive() {
+    // Create a list of sizes and widths
+    $sizes: (
+      sm: "480px",
+      md: "767px",
+      lg: "992px",
+      xl: "1200px",
+      xxl: "1600px",
+    );
+  
+    // Base style, without a suffix
+    @content;
+  
+    // Responsive styles
+    // Loop over each size
+    @each $suffix, $width in $sizes {
+      @media only screen and (min-width: $width) {
+        &-#{$suffix} { @content; }
+      }
+    }
+}
+
+$spaceamounts: (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 0);
+
+// change this order to manage the space multiplier
+$base-multiplier:0.5;
+
+@each $space in $spaceamounts { // looping throw the spacing value
+ 
+    .m{
+        @include generate-responsive(){ // to add the prefix of breakpoint
+            &-#{$space} {
+                margin:#{calc($space * $base-multiplier)}rem !important;
+            }
+        }
+    }
+
+    .mx{
+        @include generate-responsive(){ // to add the prefix of breakpoint
+            &-#{$space}{
+                margin-left: #{calc($space * $base-multiplier)}rem !important;
+                margin-right: #{calc($space * $base-multiplier)}rem !important;
+            }
+        }
+    }
+
+    .my{
+        @include generate-responsive(){ // to add the prefix of breakpoint
+            &-#{$space}{
+                margin-top: #{calc($space * $base-multiplier)}rem !important;
+                margin-bottom: #{calc($space * $base-multiplier)}rem !important;
+            }
+        }
+    }
+
+    .ml{
+        @include generate-responsive(){ // to add the prefix of breakpoint
+            &-#{$space}{
+                margin-left: #{calc($space * $base-multiplier)}rem !important; 
+            }
+        }
+    }
+
+    .mr{
+        @include generate-responsive(){ // to add the prefix of breakpoint
+            &-#{$space}{
+                margin-right: #{calc($space * $base-multiplier)}rem !important;
+            }
+        } 
+    }
+
+    .mb{
+        @include generate-responsive(){ // to add the prefix of breakpoint
+            &-#{$space}{
+                margin-bottom: #{calc($space * $base-multiplier)}rem !important;
+            }
+        } 
+    }
+
+    .mt{
+        @include generate-responsive(){ // to add the prefix of breakpoint
+            &-#{$space}{
+                margin-top: #{calc($space * $base-multiplier)}rem !important;
+            }
+        } 
+    }
+
+    .p{
+        @include generate-responsive(){ // to add the prefix of breakpoint
+            &-#{$space}{
+                padding: #{calc($space * $base-multiplier)}rem !important;
+            }
+        }
+    }
+ 
+    .px{
+        @include generate-responsive(){ // to add the prefix of breakpoint
+            &-#{$space}{
+                padding-left: #{calc($space * $base-multiplier)}rem !important;
+                padding-right: #{calc($space * $base-multiplier)}rem !important;
+            }
+        } 
+    }
+
+    .py{
+        @include generate-responsive(){ // to add the prefix of breakpoint
+            &-#{$space}{
+                padding-top: #{calc($space * $base-multiplier)}rem !important;
+                padding-bottom: #{calc($space * $base-multiplier)}rem !important;
+            }
+        }   
+    }
+
+    .pl{
+        @include generate-responsive(){ // to add the prefix of breakpoint
+            &-#{$space}{
+                padding-left: #{calc($space * $base-multiplier)}rem !important;
+            }
+        } 
+    }
+
+    .pr{
+        @include generate-responsive(){ // to add the prefix of breakpoint
+            &-#{$space}{
+                padding-right: #{calc($space * $base-multiplier)}rem !important;
+            }
+        } 
+    }
+
+    .pb{
+        @include generate-responsive(){ // to add the prefix of breakpoint
+            &-#{$space}{
+                padding-bottom: #{calc($space * $base-multiplier)}rem !important;
+            }
+        } 
+    }
+
+    .pt{
+        @include generate-responsive(){ // to add the prefix of breakpoint
+            &-#{$space}{
+                padding-top: #{calc($space * $base-multiplier)}rem !important;
+            }
+        }  
+    }
+}

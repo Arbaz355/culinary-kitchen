@@ -1,0 +1,43 @@
+@use '../abstract/breakpoints' as *;
+@use '../abstract/colors' as *;
+@use '../abstract/function' as *;
+@use '../abstract/font' as *;
+
+.btn{
+    display:inline-block;
+    border:none;
+    outline:none;
+    background-color:transparent;
+    font-size:rem(16);
+    line-height:1em;
+    font-family:$ff-primary;
+    text-transform:capitalize;
+
+    i{
+        transition:0.25s transform ease-in-out;
+        transform:translateX(0);
+    }
+
+    &:hover{
+        cursor:pointer;
+    }
+
+    &:hover i{
+        transform:translateX(3px);
+    }
+}
+
+.btn-explore--white{
+    color:$clr-white;
+}
+
+.btn-explore--primary{
+    border-radius:22px;
+    padding:rem(12) rem(24);
+    border:1px solid $clr-white;
+    color:$clr-white;
+}
+
+.btn-explore--primary{
+
+}

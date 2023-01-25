@@ -1,0 +1,54 @@
+@use './font' as *;
+@use '../abstract/colors' as *;
+
+// ======== background cover =========
+@mixin background-cover{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+// ======== flex toolkit =========//
+@mixin flex-column{
+    display:flex;
+    flex-direction: column;
+}
+
+@mixin flex-center{
+    display:flex;
+    justify-content: center;
+    align-items:center;
+}
+
+@mixin flex-center-horizontal{
+    display:flex;
+    justify-content: center;
+}
+
+@mixin flex-center-vertical{
+    display:flex;
+    align-items:center;
+}
+
+// ======== pseudo ============= //
+@mixin pseudo-cover{
+    content: '';
+    position:absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+}
+
+// ======== setting font for header and body ======= //
+@mixin font-heading{
+    font-family:$ff-primary;
+    font-weight:bold;
+    color:$clr-text;
+}
+
+@mixin font-body{
+    font-family:$ff-primary;
+    font-weight:normal;
+    color:$clr-text;
+}

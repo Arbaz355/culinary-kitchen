@@ -1,0 +1,40 @@
+$sm:576px;
+$md:768px;
+$lg:992px;
+$xl:1280px;
+$xxl:1600px;
+
+// ======== mobile device =============
+@mixin breakpoint-sm{
+    @media only screen and(min-width:$sm){
+        @content;
+    }
+}
+
+// ========== tablet device ============
+@mixin breakpoint-md{
+  @media only screen and (min-width: $md){
+    @content;
+  }
+}
+
+// ========= laptop device =============== 
+@mixin breakpoint-lg {
+  @media only screen and (min-width: $lg){
+    @content;
+  }
+}
+
+// ========== desktop device ==========
+@mixin breakpoint-xl {
+  @media only screen and (min-width: $xl){
+    @content;
+  }
+}
+
+// =========== large desktop device =====
+@mixin breakpoint-xxl{
+  @media only screen and (min-width:$xxl){
+    @content;
+  }
+}

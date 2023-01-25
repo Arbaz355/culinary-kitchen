@@ -1,0 +1,23 @@
+@use '../abstract/function' as *;
+@use '../abstract/colors' as *;
+@use '../abstract/breakpoints' as *;
+@use '../abstract/mixins' as *;
+
+.header{
+    height:rem(70);
+    position:fixed;
+    width:100%;
+    top:0px;
+    z-index:999;
+    background-color:$clr-white;
+    box-shadow: 0px 1px 7px 1px rgba(0, 0, 0, 0.1);
+    @include flex-center;
+
+    .header__logo{
+        @include flex-center-vertical;
+    }
+
+    .header__logo-img{
+        max-width:rem(238);
+    }
+}

@@ -1,0 +1,23 @@
+@use '../abstract/breakpoints' as *;
+@use '../abstract/colors' as *;
+@use '../abstract/function' as *;
+
+.social-media-list{
+    gap:rem(12); 
+
+    @include breakpoint-md{
+        gap:rem(16); 
+    }
+}
+
+.social-media-icon{
+    width:rem(50);
+
+    @include breakpoint-md{
+        width:rem(60);
+    }
+
+    @include breakpoint-lg{
+        width:rem(70);
+    }
+}
